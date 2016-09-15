@@ -41,7 +41,6 @@ class GithubOauthService
   end
 
   def parse_access_token
-    byebug
     @token_response.body.split("=")[1].split("&")[0]
   end
 

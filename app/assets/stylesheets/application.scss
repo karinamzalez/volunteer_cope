@@ -14,17 +14,73 @@
  *= require_self
  */
  body.homepage {
-   background-color: #bdbdbd;
+   background-color: white;
  }
+
+ body.homepage #navbar {
+  display: none !important;
+}
 
  .grey-text {
  color: #8e8e8e;
  font-size: 22px;
- margin-bottom: -25px;
+ margin-bottom: -38px;
+ margin-top: 10px;
 }
 
 .green-text {
  color: #8fa321;
  font-size: 22px;
- margin-bottom: -25px;
+ margin-bottom: -38px;
+ margin-top: 10px;
+}
+
+.login-button {
+  padding: 18px 28px;
+  font-size: 22px;
+  color: white;
+  line-height: normal;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  background: transparent;
+  border: 2px solid white;
+  text-align: center;
+  margin-top: 50px;
+}
+.home-bar {
+  background-image: url("girl-code.jpg");
+  background-repeat: no-repeat;
+  min-height: 800px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-size: 1800px 1200px;
+  overflow: hidden;
+  text-align: center;
+  background-position: center;
+  color: white;
+  font-family: 'Open Sans';
+}
+
+.pageheader {
+    width: 100%;
+    background-color: rgba(0, 178, 192, 0.5) ! important;
+    height: 8em;
+    margin: 200px 0 0 0;
+}
+
+.pageheader h4 {
+    padding-top: 30px;
+    float: center;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#logo {
+  background: url("logo.png") no-repeat;
+  background-position: center;
+  width: 234px;
+  height: 142px;
+  margin-top: -1px;
+  padding-top: -10px;
 }

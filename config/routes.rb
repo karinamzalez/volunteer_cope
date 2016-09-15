@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'users#index'
+  root 'homepage#show'
 
   resources :users, only: :show
   get '/auth/github', as: :github_login
