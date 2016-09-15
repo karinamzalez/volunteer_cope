@@ -29,14 +29,14 @@
 }
 
 .green-text {
- color: #8fa321;
+ color:rgba(0, 178, 192, 0.5);
  font-size: 22px;
  margin-bottom: -38px;
  margin-top: 10px;
 }
 
 .login-button {
-  padding: 18px 28px;
+  padding: 14px 16px;
   font-size: 22px;
   color: white;
   line-height: normal;
@@ -46,8 +46,17 @@
   background: transparent;
   border: 2px solid white;
   text-align: center;
-  margin-top: 50px;
 }
+
+.login-button:hover {
+  color: rgba(0, 178, 192, 0.5);
+  text-decoration: none;
+}
+
+.pad {
+  padding-top: 15px;
+}
+
 .home-bar {
   background-image: url("girl-code.jpg");
   background-repeat: no-repeat;
@@ -66,7 +75,7 @@
     width: 100%;
     background-color: rgba(0, 178, 192, 0.5) ! important;
     height: 8em;
-    margin: 200px 0 0 0;
+    margin: 255px 0 0 0;
 }
 
 .pageheader h4 {
