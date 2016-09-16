@@ -26,13 +26,22 @@
  font-size: 22px;
  margin-bottom: -38px;
  margin-top: 10px;
+ padding-left: 2px;
 }
 
-.green-text {
+ .green-text {
+ color: #abc90b;
+ font-size: 22px;
+ margin-bottom: -38px;
+ margin-top: 10px;
+}
+
+.blue-text {
  color:rgba(0, 178, 192, 0.5);
  font-size: 22px;
  margin-bottom: -38px;
  margin-top: 10px;
+ padding-right: 2px;
 }
 
 .login-button {
@@ -71,6 +80,10 @@
   font-family: 'Open Sans';
 }
 
+.home-bar h2 {
+  color: rgba(0, 178, 192, 0.5);
+}
+
 .pageheader {
     width: 100%;
     background-color: rgba(0, 178, 192, 0.5) ! important;
@@ -99,4 +112,24 @@
 img {
     border-radius: 50%;
     padding-top: 12px;
+}
+
+button {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    border: 0;
+    background: transparent;
+    color: transparent !important;
+}
+
+button:hover {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    border: 0;
+    background: transparent;
+    color: inherit !important;
 }
