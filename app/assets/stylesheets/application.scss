@@ -44,21 +44,38 @@
  padding-right: 2px;
 }
 
-.login-button {
-  padding: 14px 16px;
-  font-size: 22px;
+.c--anim-btn span {
   color: white;
-  line-height: normal;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
-  background: transparent;
-  border: 2px solid white;
+  text-decoration: none;
   text-align: center;
+  display: block;
 }
 
-.login-button:hover {
-  color: rgba(0, 178, 192, 0.5);
+.c--anim-btn, .c-anim-btn {
+  transition: 0.3s;
+}
+
+.c--anim-btn {
+  float: center;
+  height: 64px;
+  font: normal normal 300 1em/4em 'Open Sans';
+  overflow: hidden;
+  width: 300px;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 8px;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+.c-anim-btn{
+  margin-top: -1em;
+}
+
+.c--anim-btn:hover .c-anim-btn{
+  margin-top: -5em;
+}
+
+.c--anim-btn a:hover {
   text-decoration: none;
 }
 
