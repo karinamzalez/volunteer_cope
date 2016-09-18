@@ -4,8 +4,9 @@ class SessionsController < ApplicationController
     if params[:code] && oauth.authenticated?
       if user = User.from_riniauth(oauth)
          session[:user_id] = user.id
+         user.add_as_collaborator
        else
-        flash[:danger] = "sorry, there was an error"
+        flash[:danger] = "hmm... sign in went awry :/"
       end
     end
     redirect_to user_path(user)
