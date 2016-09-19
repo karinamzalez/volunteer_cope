@@ -4,5 +4,6 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @issues = Issues.repo_issues(current_user)
   end
 end
