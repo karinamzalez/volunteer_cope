@@ -1,0 +1,33 @@
+<div class="col-sm-2 picture-box">
+  <img src= <%= current_user.image %> height="250" width="250"/>
+</div>
+<div class="jumbotron col-sm-8 col-sm-offset-1">
+  <ul>
+    <% @issues.each do |issue| %>
+     <li> <%= issue %> </li>
+     <% end %>
+  </ul>
+</div>
+<table class="tab" style="width100%">
+  <tr>
+    <th style="height: 30px">Monday</th>
+    <th>Tuesday</th>
+    <th>Wednesday</th>
+    <th>Thursday</th>
+    <th>Friday</th>
+  </tr>
+  <tr>
+    <td style="height: 200px">5 p.m.<button><span class="glyphicon glyphicon-plus-sign"></span> count me in!</button></td>
+    <td>5 p.m.<button><span class="glyphicon glyphicon-plus-sign"></span> count me in!</button></td>
+    <td>5 p.m.<button><span class="glyphicon glyphicon-plus-sign"></span> count me in!</button></td>
+    <td>5 p.m.<button><span class="glyphicon glyphicon-plus-sign"></span> count me in!</button></td>
+    <td>5 p.m.<button><span class="glyphicon glyphicon-plus-sign"></span> count me in!</button></td>
+  </tr>
+  <tr>
+    <td style="height: 200px">6 p.m.<button><span class="glyphicon glyphicon-plus-sign"></span> count me in!</button></td>
+    <td>6 p.m.<button><span class="glyphicon glyphicon-plus-sign"></span> count me in!</button></td>
+    <td>6 p.m.<button><span class="glyphicon glyphicon-plus-sign"></span> count me in!</button></td>
+    <td>6 p.m.<button><span class="glyphicon glyphicon-plus-sign"></span> count me in!</button></td>
+    <td>6 p.m.<button><span class="glyphicon glyphicon-plus-sign"></span> count me in!</button></td>
+  </tr>
+</table>

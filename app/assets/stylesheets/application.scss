@@ -1,0 +1,176 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ body.homepage {
+   background-color: white;
+ }
+
+ body.homepage #navbar {
+  display: none !important;
+}
+
+.tab {
+  margin-bottom: 20px;
+}
+
+ .grey-text {
+ color: #8e8e8e;
+ font-size: 22px;
+ margin-bottom: -38px;
+ margin-top: 10px;
+ padding-left: 2px;
+}
+
+ .green-text {
+ color: #abc90b;
+ font-size: 22px;
+ margin-bottom: -38px;
+ margin-top: 10px;
+}
+
+.blue-text {
+ color:rgba(0, 178, 192, 0.5);
+ font-size: 22px;
+ margin-bottom: -38px;
+ margin-top: 10px;
+ padding-right: 2px;
+}
+
+.c--anim-btn span {
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+}
+
+.c--anim-btn, .c-anim-btn {
+  transition: 0.3s;
+}
+
+.c--anim-btn {
+  float: center;
+  height: 64px;
+  font: normal normal 300 1em/4em 'Open Sans';
+  overflow: hidden;
+  width: 300px;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 8px;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+.c-anim-btn{
+  margin-top: -1em;
+}
+
+.c--anim-btn:hover .c-anim-btn{
+  margin-top: -5em;
+}
+
+.c--anim-btn a:hover {
+  text-decoration: none;
+}
+
+.pad {
+  padding-top: 15px;
+}
+
+.home-bar {
+  background-image: url("girl-code.jpg");
+  background-repeat: no-repeat;
+  min-height: 800px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-size: 1800px 1200px;
+  overflow: hidden;
+  text-align: center;
+  background-position: center;
+  color: white;
+  font-family: 'Open Sans';
+}
+
+.home-bar h2 {
+  color: rgba(0, 178, 192, 0.5);
+}
+
+.pageheader {
+    width: 100%;
+    background-color: rgba(0, 178, 192, 0.5) ! important;
+    height: 8em;
+    margin: 255px 0 0 0;
+}
+
+.pageheader h4 {
+    padding-top: 30px;
+    float: center;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#logo {
+  background: url("logo.png") no-repeat;
+  background-position: center;
+  width: 234px;
+  height: 142px;
+  margin-top: -1px;
+  padding-top: -10px;
+}
+
+img {
+    border-radius: 50%;
+    padding-top: 12px;
+}
+
+button {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    border: 0;
+    background: transparent;
+    color: transparent !important;
+}
+
+button:hover {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    border: 0;
+    background: transparent;
+    color: inherit !important;
+}
+
+.jumbotron {
+  position: center;
+  color: white;
+  background: grey;
+  width: 80%;
+  height: 250px;
+  background-size: cover;
+  overflow: scroll;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding-top: -20px;
+}
+
+.picture-box {
+  background-color: transparent;
+  margin-bottom: 10px;
+  margin-left: 45px;
+  margin-right: -10px;
+}
