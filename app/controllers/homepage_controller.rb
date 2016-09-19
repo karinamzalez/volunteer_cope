@@ -1,7 +1,7 @@
 class HomepageController < ApplicationController
   def show
     if current_user
-      redirect_to user_index_path 
+      redirect_to users_path 
     else
       render :show
     end
