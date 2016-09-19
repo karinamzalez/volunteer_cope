@@ -18,7 +18,7 @@ class User < ApplicationRecord
     `curl -X PUT -H "Authorization: token #{ENV['ADMIN_TOKEN']}" -H "Cache-Control: no-cache" "https://api.github.com/repos/volunteercope/volunteer_cope/collaborators/#{username}"`
   end
 
-  def week
-    beginning_of_week()
+  def create_lesson(title, body)
+    `curl -H "Content-Type: application/json" -H "Authorization: token #{oauth_token}" --data '{"title":"#{title}, "body":"#{body}"}' https://api.github.com/repos/volunteercope/volunteer_cope/issues`
   end
 end
