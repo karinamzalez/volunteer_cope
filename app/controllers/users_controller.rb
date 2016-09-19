@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
-    @issues = Issues.repo_issues(current_user)
+    @user = UserFacade.new(current_user)
   end
 end
