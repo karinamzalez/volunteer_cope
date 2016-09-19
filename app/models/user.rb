@@ -17,4 +17,8 @@ class User < ApplicationRecord
   def add_as_collaborator
     `curl -X PUT -H "Authorization: token #{ENV['ADMIN_TOKEN']}" -H "Cache-Control: no-cache" "https://api.github.com/repos/volunteercope/volunteer_cope/collaborators/#{username}"`
   end
+
+  def week
+    beginning_of_week()
+  end
 end
