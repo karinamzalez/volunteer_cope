@@ -1,11 +1,11 @@
 class UserFacade
- attr_reader :user
+  attr_reader :user
 
- def initialize(user)
+  def initialize(user)
    @user = user
- end
+  end
 
- def issues
+  def issues
     Issues.repo_issues(user)
- end
+  end
 end

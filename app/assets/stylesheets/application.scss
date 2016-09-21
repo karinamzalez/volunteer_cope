@@ -17,6 +17,10 @@
    background-color: white;
  }
 
+ .hidden {
+   display: none;
+ }
+
  body.homepage #navbar {
   display: none !important;
 }
@@ -113,12 +117,12 @@
 }
 
 .pageheader h4 {
-    padding-top: 30px;
-    float: center;
-    text-align: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-family: 'Courier New', Courier, monospace;
+  padding-top: 30px;
+  float: center;
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 #logo {
@@ -135,24 +139,42 @@ img {
     padding-top: 12px;
 }
 
-button {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    outline: none;
-    border: 0;
-    background: transparent;
-    color: transparent !important;
+.btn-lesson {
+  margin-top: 60px;
+  background-color: white !important;
+  color: #473d40 !important;
+  font-weight: bold !important;
 }
 
-button:hover {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    outline: none;
-    border: 0;
-    background: transparent;
-    color: inherit !important;
+.btn-lesson:hover {
+  background-color: #473d40 !important;
+  color: white !important;
+  font-weight: bold !important;
+}
+
+.count_me {
+  margin-left: 10px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  border: 0;
+  background: transparent;
+  color: inherit !important;
+  font-size: 15px;
+}
+
+.count_me:hover {
+  margin-left: 10px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  border: 0;
+  background: transparent;
+  color: #41c6d1 !important;
+  font-size: 15px;
+  text-decoration: none;
 }
 
 .jumbotron {

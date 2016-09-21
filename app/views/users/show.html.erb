@@ -1,33 +1,98 @@
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+$( function() {
+  $( "#datepicker" ).datepicker();
+  $( "#anim" ).on( "change", function() {
+    $( "#datepicker" ).datepicker( "option", "showAnim", $( this ).val() );
+  });
+} );
+</script>
+
 <div class="col-sm-2 picture-box">
   <img src= <%= current_user.image %> height="250" width="250"/>
 </div>
+<p class="col-sm-offset-3">Date: <input type="text" id="datepicker" size="30"></p>
 <div class="jumbotron col-sm-8 col-sm-offset-1">
-  <ul>
-    <% @user.issues.each do |issue| %>
-     <li> <%= issue %> </li>
-     <% end %>
-  </ul>
+  <div class="hidden" id="form">
+    <%= render partial: 'lesson', locals: {user: @user} %>
+  </div>
 </div>
 <table class="tab" style="width100%">
   <tr>
-    <th style="height: 30px">Monday</th>
-    <th>Tuesday</th>
-    <th>Wednesday</th>
-    <th>Thursday</th>
-    <th>Friday</th>
+    <th class="weekday" style="height: 30px" id="0">● Monday</th>
+    <th class="weekday" id="1">● Tuesday</th>
+    <th class="weekday" id="2">● Wednesday</th>
+    <th class="weekday" id="3">● Thursday</th>
+    <th class="weekday" id="4">● Friday</th>
   </tr>
   <tr>
-    <td style="height: 200px">5 p.m.<button><span class="glyphicon glyphicon-plus-sign"></span> count me in!</button></td>
-    <td>5 p.m.<button><span class="glyphicon glyphicon-plus-sign"></span> count me in!</button></td>
-    <td>5 p.m.<button><span class="glyphicon glyphicon-plus-sign"></span> count me in!</button></td>
-    <td>5 p.m.<button><span class="glyphicon glyphicon-plus-sign"></span> count me in!</button></td>
-    <td>5 p.m.<button><span class="glyphicon glyphicon-plus-sign"></span> count me in!</button></td>
+    <td class="hour" id="monday_5" style="height: 200px">5 p.m.
+      <%= link_to '/add_assignees', class: 'count_me' do %>
+        <span class="glyphicon glyphicon-plus-sign"></span> count me in!
+      <% end %>
+      <p>
+        <button type="button" class="btn btn-lesson btn-sm" id="lesson">Add Lesson</button>
+      </p>
+    </td>
+    <td class="hour" id="tuesday_5"> 5 p.m.
+      <%= link_to '/add_assignees', class: 'count_me' do %>
+        <span class="glyphicon glyphicon-plus-sign"></span> count me in!
+      <% end %>
+      <p>
+        <button type="button" class="btn btn-lesson btn-sm" id="tue_5">Add Lesson</button>
+      </p>
+    </td>
+    <td class="hour" id="wednesday_5">5 p.m.
+      <%= link_to '/add_assignees', class: 'count_me' do %>
+        <span class="glyphicon glyphicon-plus-sign"></span> count me in!
+      <% end %>
+      <p>
+        <button type="button" class="btn btn-lesson btn-sm" id="wed_5">Add Lesson</button>
+      </p>
+    </td>
+    <td class="hour" id="thursday_5">5 p.m.
+      <%= link_to '/add_assignees', class: 'count_me' do %>
+        <span class="glyphicon glyphicon-plus-sign"></span> count me in!
+      <% end %>
+      <p>
+        <button type="button" class="btn btn-lesson btn-sm" id="thurs_5">Add Lesson</button>
+      </p>
+    </td>
+    <td class="hour" id="friday_5">5 p.m.
+      <%= link_to '/add_assignees', class: 'count_me' do %>
+        <span class="glyphicon glyphicon-plus-sign"></span> count me in!
+      <% end %>
+      <p>
+        <button type="button" class="btn btn-lesson btn-sm" id="fri_5">Add Lesson</button>
+      </p>
+    </td>
   </tr>
   <tr>
-    <td style="height: 200px">6 p.m.<button><span class="glyphicon glyphicon-plus-sign"></span> count me in!</button></td>
-    <td>6 p.m.<button><span class="glyphicon glyphicon-plus-sign"></span> count me in!</button></td>
-    <td>6 p.m.<button><span class="glyphicon glyphicon-plus-sign"></span> count me in!</button></td>
-    <td>6 p.m.<button><span class="glyphicon glyphicon-plus-sign"></span> count me in!</button></td>
-    <td>6 p.m.<button><span class="glyphicon glyphicon-plus-sign"></span> count me in!</button></td>
+    <td class="hour" id="monday_6" style="height: 200px">6 p.m.
+      <%= link_to '/add_assignees', class: 'count_me' do %>
+        <span class="glyphicon glyphicon-plus-sign"></span> count me in!
+      <% end %>
+    </td>
+    <td class="hour" id="tuesday_6">6 p.m.
+      <%= link_to '/add_assignees', class: 'count_me' do %>
+        <span class="count glyphicon glyphicon-plus-sign"></span> count me in!
+      <% end %>
+    </td>
+    <td class="hour" id="wednesday_6">6 p.m.
+      <%= link_to '/add_assignees', class: 'count_me' do %>
+        <span class="glyphicon glyphicon-plus-sign"></span> count me in!
+      <% end %>
+    </td>
+    <td class="hour" id="thursday_6">6 p.m.
+      <%= link_to '/add_assignees', class: 'count_me' do %>
+        <span class="glyphicon glyphicon-plus-sign"></span> count me in!
+      <% end %>
+    </td>
+    <td class="hour" id="friday_6">6 p.m.
+      <%= link_to '/add_assignees', class: 'count_me' do %>
+        <span class="glyphicon glyphicon-plus-sign"></span> count me in!
+      <% end %>
+    </td>
   </tr>
 </table>

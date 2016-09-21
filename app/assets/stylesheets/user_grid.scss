@@ -3,12 +3,12 @@ table {
 }
 
 td:hover {
-  background-color: #f5f5f5;
-  color: rgba(0, 178, 192, 0.5);
+  background-color: #c5c5c5;
   font-weight: bold;
 }
 
-tr, td {
+.hour {
+  color: white;
   padding-left: 10px !important;
   border-left: 1px solid white;
   background-color: #ebebeb;
@@ -16,13 +16,12 @@ tr, td {
   min-height: 1000px;
 }
 
-tr, th {
+.weekday {
   min-width: 237px;
   min-height: 60px;
-  background-color: rgba(0, 178, 192, 0.5);
+  background-color: #41c6d1;
   border-left: 1px solid white;
   color: white;
-  -webkit-font-smoothing: antialiased !important;
   text-align: center !important;
   font-size: 15px;
 }
