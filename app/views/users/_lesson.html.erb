@@ -1,0 +1,7 @@
+<%= form_tag("/create_lesson", method: "get") do %>
+  <%= label_tag(:title, "tile") %>
+  <%= text_field_tag(:title) %>
+  <%= label_tag(:body, "description") %>
+  <%= text_field_tag(:body) %>
+  <%= submit_tag("Create Lesson") %>
+<% end %>

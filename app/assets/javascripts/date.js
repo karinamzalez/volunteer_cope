@@ -22,7 +22,7 @@ $(document).ready(function () {
     var day = date.getDate();
     var month = date.getMonth() + 1;
     var year = date.getFullYear();
-    return month + " ● " + day + " ● " + year;
+    return month + "/" + day + " ●";
   }
 
   function _nextDay(currentDate) {
@@ -37,7 +37,7 @@ $(document).ready(function () {
   }
 
  function renderDayOfWeek(dayID) {
-   $(dayID).append("<p>" + daysOfWeek(new Date())[parseInt(dayID[1])] + "</p>");
+   $(dayID).append(" " + daysOfWeek(new Date())[parseInt(dayID[1])]);
  }
 
  renderDayOfWeek("#0");
