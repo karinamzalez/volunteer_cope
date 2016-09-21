@@ -9,6 +9,14 @@ $(document).ready(function () {
     return _formatDatesArray([monday, tuesday, wednesday, thursday, friday]);
   }
 
+  function hashDates(daysArray) {
+    return {
+            monday: daysArray[0], tuesday: daysArray[1],
+            wednesday: daysArray[2], thursday: daysArray[3],
+            friday: daysArray[4]
+          };
+  }
+
   function _formatDatesArray(days) {
     var formattedDates = [];
 
