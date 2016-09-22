@@ -12,7 +12,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'figaro'
 gem 'faraday'
-
+gem 'rails_12factor'
 
 group :development, :test do
   gem 'byebug', platform: :mri
