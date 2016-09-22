@@ -22,7 +22,7 @@
             <% if current_user %>
               <li><%= link_to "Logout", logout_path, method: :delete %></li>
             <% else %>
-              <li class="custom-nav"><a href="https://github.com/login/oauth/authorize?client_id=ff018d004d8631812638&scope=user:email">Login</a></li>
+              <li class="custom-nav"><a href="https://github.com/login/oauth/authorize?client_id=#{ENV['GITHUB_CLIENT_ID']}&scope=user:email">Login</a></li>
             <% end %>
           </ul>
         </div>
