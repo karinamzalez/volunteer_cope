@@ -1,11 +1,8 @@
 class LessonsController < ApplicationController
 
-
-  
-
   def create
-    if params[:title] && params[:body]
-      Lesson.new(params)
+    @lesson = Lesson.new(date: params[:date], body: params[:body], title: params[:title] )
+    if @lesson.save
       Lesson.create_lesson(params[:title], params[:body])
       flash[:success] = "Lesson successfully created!"
     else
@@ -16,14 +13,15 @@ class LessonsController < ApplicationController
 
   def update
     user = current_user.username
+    date = 
     Lesson.add_assignees(user)
-    flash[:success] = "Lesson successfully created!"
+    flash[:success] = "successfully assigned to volunteer on #{date}!"
     redirect_to user_path(current_user)
   end
 
   private
 
-  def lesson_params
-
-  end
+  # def lesson_params
+  #   require(:lesson).permit(:title, :body, :date)
+  # end
 end
