@@ -14,7 +14,10 @@ $( function() {
 </div>
 <p class="col-sm-offset-3">Date: <input type="text" id="datepicker" size="30"></p>
 <div class="jumbotron col-sm-8 col-sm-offset-1">
-  <div class="hidden" id="form">
+  <h2 class="lesson-title">LessonPlan</h2>
+    <p class="lesson-body">fdsahjkbdsfjfdgkjh  fgdhbfdgjlkhfdksgjhldfhabdsajflhdakbfvbachkbdjhbdvjhbdvjdvjsjcjksclakcd
+    abhcbdccabkdcjbkcbjdcbjcbjkdsbdvvfkjvfvbdfvjbj</p>
+  <div style="display:none" id="form">
     <%= render partial: 'lesson'%>
   </div>
 </div>
@@ -28,11 +31,12 @@ $( function() {
   </tr>
   <tr>
     <td class="hour" style="height: 200px">5 p.m.
-      <%= link_to '/add_assignees', class: 'count_me', id:"monday_5" do %>
+      <%= link_to '/add_assignees', class: 'count_me' do %>
         <span class="glyphicon glyphicon-plus-sign"></span> count me in!
       <% end %>
       <p>
-        <button type="button" id="monday_5" class="btn btn-lesson btn-sm lesson">Add Lesson</button>
+        <button type="button" class="monday_5 btn btn-lesson btn-sm lesson">Add Lesson</button>
+        <button type="button" class="monday_5 btn btn-lesson btn-sm view-lesson">View Lesson</button>
       </p>
     </td>
     <td class="hour"> 5 p.m.
@@ -40,7 +44,8 @@ $( function() {
         <span class="glyphicon glyphicon-plus-sign"></span> count me in!
       <% end %>
       <p>
-        <button type="button" id="tuesday_5" class="btn btn-lesson btn-sm lesson">Add Lesson</button>
+        <button type="button" class="tuesday_5 btn btn-lesson btn-sm lesson">Add Lesson</button>
+        <button type="button" class="tuesday_5 btn btn-lesson btn-sm view-lesson">View Lesson</button>
       </p>
     </td>
     <td class="hour">5 p.m.
@@ -48,7 +53,8 @@ $( function() {
         <span class="glyphicon glyphicon-plus-sign"></span> count me in!
       <% end %>
       <p>
-        <button type="button" id="wednesday_5" class="btn btn-lesson btn-sm lesson">Add Lesson</button>
+        <button type="button" class="wednesday_5 btn btn-lesson btn-sm lesson">Add Lesson</button>
+        <button type="button" class="wednesday_5 btn btn-lesson btn-sm view-lesson">View Lesson</button>
       </p>
     </td>
     <td class="hour">5 p.m.
@@ -56,7 +62,8 @@ $( function() {
         <span class="glyphicon glyphicon-plus-sign"></span> count me in!
       <% end %>
       <p>
-        <button type="button" id="thursday_5" class="btn btn-lesson btn-sm lesson">Add Lesson</button>
+        <button type="button" class="thursday_5 btn btn-lesson btn-sm lesson">Add Lesson</button>
+        <button type="button" class="thursday_5 btn btn-lesson btn-sm view-lesson">View Lesson</button>
       </p>
     </td>
     <td class="hour">5 p.m.
@@ -64,7 +71,8 @@ $( function() {
         <span class="glyphicon glyphicon-plus-sign"></span> count me in!
       <% end %>
       <p>
-        <button type="button" class="btn btn-lesson btn-sm lesson" id="friday_5">Add Lesson</button>
+        <button type="button" class="friday_5 btn btn-lesson btn-sm lesson">Add Lesson</button>
+        <button type="button" class="friday_5 btn btn-lesson btn-sm view-lesson">View Lesson</button>
       </p>
     </td>
   </tr>

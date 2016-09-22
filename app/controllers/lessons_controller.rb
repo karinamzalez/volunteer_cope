@@ -13,15 +13,8 @@ class LessonsController < ApplicationController
 
   def update
     user = current_user.username
-    date = 
     Lesson.add_assignees(user)
-    flash[:success] = "successfully assigned to volunteer on #{date}!"
+    flash[:success] = "successfully assigned to volunteer on!"
     redirect_to user_path(current_user)
   end
-
-  private
-
-  # def lesson_params
-  #   require(:lesson).permit(:title, :body, :date)
-  # end
 end

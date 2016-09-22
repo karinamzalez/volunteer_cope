@@ -58,8 +58,9 @@ $(document).ready(function () {
    var date = daysOfWeek(new Date())[parseInt(dayID[1])];
    var unformattedDate = unformattedDaysOfWeek(new Date())[parseInt(dayID[1])];
    $(dayID).append(" " + date);
-   $("#" + dayMapper[dayID[1]][0]).attr("data-date", unformattedDate);
-   $("#" + dayMapper[dayID[1]][1]).attr("data-date", unformattedDate);
+   $("." + dayMapper[dayID[1]][0]).attr("data-date", unformattedDate);
+   $("." + dayMapper[dayID[1]][1]).attr("data-date", unformattedDate);
+  //  add two more of the above for the view lesson button
  }
 
  var dayMapper = {
