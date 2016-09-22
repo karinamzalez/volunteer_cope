@@ -4,6 +4,6 @@ class Lesson < ApplicationRecord
   end
 
   def self.add_assignees(users)
-    `curl -H "Content-Type: application/json" -H "Authorization: token #{ENV['ADMIN_TOKEN']}" --data '{"assignees":["#{users}"]}' https://api.github.com/repos/volunteercope/volunteer_cope/issues/1`
+    `curl -H "Content-Type: application/json" -H "Authorization: token #{ENV['ADMIN_TOKEN']}" --data '{"assignees":["#{users}"]}' https://api.github.com/repos/volunteercope/volunteer_cope/issues/3`
   end
 end

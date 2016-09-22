@@ -20,3 +20,11 @@ function blinker() {
 }
 
 setInterval(blinker, 1000);
+
+$('#datepicker').datepicker({
+    inline : true,
+    altField : '#hiddenFieldID',
+    onSelect : function(){
+        $('#myFormID').submit();
+    }
+});

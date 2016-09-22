@@ -30,26 +30,26 @@
 }
 
  .grey-text {
- color: #8e8e8e;
- font-size: 22px;
- margin-bottom: -38px;
- margin-top: 10px;
- padding-left: 2px;
+  color: #8e8e8e;
+  font-size: 22px;
+  margin-bottom: -38px;
+  margin-top: 10px;
+  padding-left: 2px;
 }
 
  .green-text {
- color: #abc90b;
- font-size: 22px;
- margin-bottom: -38px;
- margin-top: 10px;
+  color: #abc90b;
+  font-size: 22px;
+  margin-bottom: -38px;
+  margin-top: 10px;
 }
 
 .blue-text {
- color:rgba(0, 178, 192, 0.5);
- font-size: 22px;
- margin-bottom: -38px;
- margin-top: 10px;
- padding-right: 2px;
+  color:rgba(0, 178, 192, 0.5);
+  font-size: 22px;
+  margin-bottom: -38px;
+  margin-top: 10px;
+  padding-right: 2px;
 }
 
 .c--anim-btn span {
@@ -110,10 +110,10 @@
 }
 
 .pageheader {
-    width: 100%;
-    background-color: rgba(0, 178, 192, 0.5) ! important;
-    height: 8em;
-    margin: 255px 0 0 0;
+  width: 100%;
+  background-color: rgba(0, 178, 192, 0.5) ! important;
+  height: 8em;
+  margin: 255px 0 0 0;
 }
 
 .pageheader h4 {
@@ -184,7 +184,8 @@ img {
   width: 80%;
   height: 250px;
   background-size: cover;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   margin-top: 10px;
   margin-left: 10px;
   padding-top: -20px;
@@ -195,4 +196,12 @@ img {
   margin-bottom: 10px;
   margin-left: 45px;
   margin-right: -10px;
+}
+
+h2 {
+  margin-left: -60px;
+  text-align: center;
+  margin-top: -37px !important;
+  color:grey !important;
+  // text-shadow: -1px 0 #abc90b, 0 1px #abc90b, 1px 0 #abc90b, 0 -1px #abc90b;
 }
