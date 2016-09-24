@@ -57,7 +57,6 @@ $(document).ready(function () {
     $(".lesson-body").text(lesson.body);
   }
 
-  $(".view-lesson").hide();
   viewLesson();
   toggleView(".lesson", "#form");
 });

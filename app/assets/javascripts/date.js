@@ -64,11 +64,11 @@ $(document).ready(function () {
  }
 
  var dayMapper = {
-   "0": ["monday_5", "monday_6"],
-   "1": ["tuesday_5", "tuesday_6"],
-   "2": ["wednesday_5", "wednesday_6"],
-   "3": ["thursday_5", "thursday_6"],
-   "4": ["friday_5", "friday_6"]
+   "0": ["day_0_5", "monday_6"],
+   "1": ["day_1_5", "tuesday_6"],
+   "2": ["day_2_5", "wednesday_6"],
+   "3": ["day_3_5", "thursday_6"],
+   "4": ["day_4_5", "friday_6"]
  };
 
  renderDayOfWeek("#0");

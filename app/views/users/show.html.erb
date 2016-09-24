@@ -29,6 +29,28 @@ $( function() {
     <th class="weekday" id="4">● Friday</th>
   </tr>
   <tr>
+  <% @lessons.current_week_lessons.each do |days_lesson| %>
+    <td class="hour" style="height: 200px">5 p.m.
+      <%= link_to '/add_assignees', class: 'count_me' do %>
+        <span class="glyphicon glyphicon-plus-sign"></span> count me in!
+      <% end %>
+      <p>
+        <% if days_lesson[1] %>
+          <button type="button" class="day_<%= days_lesson[0] %>_5 btn btn-lesson btn-sm view-lesson" data-id="<%= days_lesson[1].last.id %>">View Lesson</button>
+        <% else  %>
+          <button type="button" class="day_<%= days_lesson[0] %>_5 btn btn-lesson btn-sm lesson">Add Lesson</button>
+          <button type="button" class="day_<%= days_lesson[0] %>_5 btn btn-lesson btn-sm view-lesson" style="display:none">View Lesson</button>
+        <% end %>
+      </p>
+    </td>
+  <% end %>
+
+
+
+<!--
+
+
+
     <td class="hour" style="height: 200px">5 p.m.
       <%= link_to '/add_assignees', class: 'count_me' do %>
         <span class="glyphicon glyphicon-plus-sign"></span> count me in!
@@ -73,7 +95,7 @@ $( function() {
         <button type="button" class="friday_5 btn btn-lesson btn-sm lesson">Add Lesson</button>
         <button type="button" class="friday_5 btn btn-lesson btn-sm view-lesson">View Lesson</button>
       </p>
-    </td>
+    </td> -->
   </tr>
   <tr>
     <td class="hour" id="monday_6" style="height: 200px">6 p.m.
