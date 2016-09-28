@@ -8,6 +8,9 @@ class Lesson < ApplicationRecord
   end
 
   def self.current_week_lessons_by_day(date)
+    if date.class == String
+      date = Date.parse(date)
+    end
     monday = date.at_beginning_of_week + 1
     friday = date.at_end_of_week - 1
     current_week_lessons = Lesson.where(:date => monday..friday)

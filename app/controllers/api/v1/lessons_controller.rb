@@ -17,6 +17,11 @@ class Api::V1::LessonsController < ApplicationController
     render json: @lesson
   end
 
+  def index
+    @lessons = Lesson.current_week_lessons_by_day(params[:date])
+    render json: @lessons
+  end
+
 private
 
   def lesson_params
