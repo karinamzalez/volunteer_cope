@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
         flash[:danger] = "hmm... sign in went awry :/"
       end
     end
-    redirect_to user_path(user)
+    redirect_to user_path(user.slug)
   end
 
   def destroy

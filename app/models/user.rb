@@ -1,4 +1,10 @@
 class User < ApplicationRecord
+  before_create :create_slug
+
+  def create_slug
+    self.slug = self.username.parameterize
+  end
+
   def self.from_riniauth(oauth)
     auth_info = oauth.get_user
     user = where(uid: auth_info[:id]).first_or_create do |new_user|
