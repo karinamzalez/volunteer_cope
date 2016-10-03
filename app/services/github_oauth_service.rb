@@ -29,6 +29,7 @@ class GithubOauthService
 
     login_request = Net::HTTP::Post.new(uri)
     login_request.set_form_data(token_params(code))
+    
     login_request.basic_auth ENV["GITHUB_CLIENT_ID"], ENV["GITHUB_CLIENT_SECRET"]
 
     Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
@@ -45,10 +46,15 @@ class GithubOauthService
   end
 
   def token_params(code)
-    { "grant_type" => "authorization_code",
-      "code" => code,
-      "redirect_uri" => "http://127.0.0.1:3000/auth/github/callback",
-      "Content-Type" => "application/x-www-form-urlencoded"
-    }
+    if Rails.env.production?
+      redirect_uri = "https://volunteer-cope.herokuapp.com/auth/github/callback"
+    else
+      redirect_uri = "http://127.0.0.1:3000/auth/github/callback"
+    end
+      { "grant_type" => "authorization_code",
+        "code" => code,
+        "redirect_uri" => redirect_uri,
+        "Content-Type" => "application/x-www-form-urlencoded"
+      }
   end
 end
