@@ -3,6 +3,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = UserFacade.new(current_user)
+    @lessons = LessonsFacade.new(current_user)
   end
 end

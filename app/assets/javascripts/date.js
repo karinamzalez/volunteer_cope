@@ -1,6 +1,23 @@
 $(document).ready(function () {
+  renderDayOfWeek("#0");
+  renderDayOfWeek("#1");
+  renderDayOfWeek("#2");
+  renderDayOfWeek("#3");
+  renderDayOfWeek("#4");
+});
+
   function daysOfWeek(date) {
     var monday    = _getMonday(date);
+    var tuesday   = _nextDay(monday);
+    var wednesday = _nextDay(tuesday);
+    var thursday  = _nextDay(wednesday);
+    var friday    = _nextDay(thursday);
+
+    return _formatDatesArray([monday, tuesday, wednesday, thursday, friday]);
+  }
+
+  function chosenDaysOfWeek(date) {
+    var monday    = _getChosenMonday(date);
     var tuesday   = _nextDay(monday);
     var wednesday = _nextDay(tuesday);
     var thursday  = _nextDay(wednesday);
@@ -19,12 +36,14 @@ $(document).ready(function () {
     return [monday, tuesday, wednesday, thursday, friday];
   }
 
-  function hashDates(daysArray) {
-    return {
-            monday: daysArray[0], tuesday: daysArray[1],
-            wednesday: daysArray[2], thursday: daysArray[3],
-            friday: daysArray[4]
-          };
+  function unformattedChosenDaysOfWeek(date) {
+    var monday    = _getChosenMonday(date);
+    var tuesday   = _nextDay(monday);
+    var wednesday = _nextDay(tuesday);
+    var thursday  = _nextDay(wednesday);
+    var friday    = _nextDay(thursday);
+
+    return [monday, tuesday, wednesday, thursday, friday];
   }
 
   function _formatDatesArray(days) {
@@ -48,9 +67,18 @@ $(document).ready(function () {
   }
 
   function _getMonday(date) {
-    d = new Date(date);
+    var d = new Date();
     var day = d.getDay();
-    diff = d.getDate() - day + (day === 0 ? -6:1);
+    var diff = d.getDate() - day + (day === 0 ? -6:1);
+    return new Date(d.setDate(diff));
+  }
+
+  function _getChosenMonday(date) {
+    var splitDate = date.split("-");
+    date = new Date(splitDate[2], splitDate[1] - 1, splitDate[0]);
+    var d = date;
+    var day = d.getDay();
+    var diff = d.getDate() - day + (day === 0 ? -6:1);
     return new Date(d.setDate(diff));
   }
 
@@ -60,20 +88,29 @@ $(document).ready(function () {
    $(dayID).append(" " + date);
    $("." + dayMapper[dayID[1]][0]).attr("data-date", unformattedDate);
    $("." + dayMapper[dayID[1]][1]).attr("data-date", unformattedDate);
-  //  add two more of the above for the view lesson button
+ }
+
+ function renderChosenDayOfWeek(dayID, chosenDate) {
+   var date = chosenDaysOfWeek(chosenDate)[parseInt(dayID[1])];
+   var unformattedDate = unformattedChosenDaysOfWeek(chosenDate)[parseInt(dayID[1])];
+   var weekday = $(dayID).text().split("y")[0] + "y";
+   $(dayID).empty().append(weekday + " " + date);
+   $("." + dayMapper[dayID[1]][0]).attr("data-date", unformattedDate);
+   $("." + dayMapper[dayID[1]][1]).attr("data-date", unformattedDate);
  }
 
  var dayMapper = {
-   "0": ["monday_5", "monday_6"],
-   "1": ["tuesday_5", "tuesday_6"],
-   "2": ["wednesday_5", "wednesday_6"],
-   "3": ["thursday_5", "thursday_6"],
-   "4": ["friday_5", "friday_6"]
+   "0": ["day_0_5", "monday_6"],
+   "1": ["day_1_5", "tuesday_6"],
+   "2": ["day_2_5", "wednesday_6"],
+   "3": ["day_3_5", "thursday_6"],
+   "4": ["day_4_5", "friday_6"]
  };
 
- renderDayOfWeek("#0");
- renderDayOfWeek("#1");
- renderDayOfWeek("#2");
- renderDayOfWeek("#3");
- renderDayOfWeek("#4");
-});
+function updateCalendarDates(chosenDate) {
+  renderChosenDayOfWeek("#0", chosenDate);
+  renderChosenDayOfWeek("#1", chosenDate);
+  renderChosenDayOfWeek("#2", chosenDate);
+  renderChosenDayOfWeek("#3", chosenDate);
+  renderChosenDayOfWeek("#4", chosenDate);
+}
