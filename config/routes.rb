@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'homepage#show'
 
-  resources :users, only: [:show, :index]
+  get ':user_slug', to: 'users#show', as: :user
 
   namespace :api do
     namespace :v1, defaults: {format: :json}  do
