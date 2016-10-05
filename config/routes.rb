@@ -11,8 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/create_lesson', to: "lessons#create"
-  get '/add_assignees', to: "lessons#update"
+  get '/add_assignees', to: "api/v1/lessons#update"
   get '/auth/github', as: :github_login
   get '/auth/github/callback', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"

@@ -1,10 +1,14 @@
 class Lesson < ApplicationRecord
-  def self.create_lesson(title, body)
-    `curl -H "Content-Type: application/json" -H "Authorization: token #{ENV['ADMIN_TOKEN']}" --data '{"title":"#{title}", "body":"#{body}"}' https://api.github.com/repos/volunteercope/volunteer_cope/issues`
+  def self.service
+    @@service ||= GithubService.new
   end
 
-  def self.add_assignees(users)
-    `curl -H "Content-Type: application/json" -H "Authorization: token #{ENV['ADMIN_TOKEN']}" --data '{"assignees":["#{users}"]}' https://api.github.com/repos/volunteercope/volunteer_cope/issues/3`
+  def self.create_lesson(title, body)
+    service.create_lesson(title, body)
+  end
+
+  def self.add_volunteer(users, issue_id)
+    service.add_assignee(user, issue_id)
   end
 
   def self.current_week_lessons_by_day(date)

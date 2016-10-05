@@ -11,6 +11,10 @@ $(document).ready(function () {
     });
   }
 
+  var addAssignees = function(addButton) {
+    $(".count_me")
+  };
+
   var createLesson = function(addButton) {
     $("#create_lesson").on("click", function(e) {
       var title = $("#title").val();
