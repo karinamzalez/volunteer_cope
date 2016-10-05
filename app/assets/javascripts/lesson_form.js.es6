@@ -11,9 +11,39 @@ $(document).ready(function () {
     });
   }
 
-  var addAssignees = function(addButton) {
-    $(".count_me")
+  var addAssignees = function() {
+    //cant volunteer if no lesson present
+    //if they try to count themselve in add pop up that urges you to create lesson first
+    //
+    $(".count_me").on('click', function(e){
+      e.preventDefault();
+      var button = $(this);
+      var date = button.siblings().children()[0].getAttribute('data-date');
+      $.ajax({
+        method: "GET",
+        url: "/api/v1/lessons/find_by/" + date,
+        success: function(lesson) {
+          addAssigneeToIssue(lesson.github_id);
+          toggleCountMeIn(button);
+          console.log(lesson.github_id);
+        }
+      });
+    });
   };
+
+  var addAssigneeToIssue = function(githubId) {
+    $.ajax({
+      method: "GET",
+      url: "/api/v1/lessons/add_assignee/" + githubId,
+      success: function(data){
+        console.log(data);
+      }
+    });
+  };
+
+  var toggleCountMeIn = function(button) {
+    button.replaceWith("<p>yay!</p>");
+};
 
   var createLesson = function(addButton) {
     $("#create_lesson").on("click", function(e) {
@@ -108,4 +138,5 @@ $(document).ready(function () {
   calendarWeekLessons();
   viewLesson();
   toggleView(".lesson", "#form");
+  addAssignees();
 });
