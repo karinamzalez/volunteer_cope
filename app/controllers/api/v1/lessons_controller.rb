@@ -3,11 +3,11 @@ class Api::V1::LessonsController < ApplicationController
 
   def create
     lesson = Lesson.create_lesson(lesson_params[:title], lesson_params[:body])
-    @lesson = Lesson.new(lesson_params, github_id: lesson[:number])
+    @lesson = Lesson.new(body: lesson_params[:body], title: lesson_params[:title], date: lesson_params[:date], github_id: lesson[:number])
     if @lesson.save
-      flash[:success] = "Lesson successfully created!"
+      flash.now[:success] = "Lesson successfully created!"
     else
-      flash[:warning] = "Please fill in the title and description."
+      flash.now[:warning] = "Please fill in the title and description."
     end
     render json: @lesson
   end
@@ -22,8 +22,15 @@ class Api::V1::LessonsController < ApplicationController
     render json: @lessons
   end
 
-  def add_volunteer
+  def find_lesson_by_date
+    date = params[:date].to_datetime
+    @lesson = Lesson.where(date: date.beginning_of_day..date.end_of_day).last
+    render json: @lesson
+  end
 
+  def add_assignee
+    @lesson = Lesson.add_assignee(current_user.username, params[:github_id])
+    render json: @lesson
   end
 
 private

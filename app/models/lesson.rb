@@ -7,8 +7,8 @@ class Lesson < ApplicationRecord
     service.create_lesson(title, body)
   end
 
-  def self.add_volunteer(users, issue_id)
-    service.add_assignee(user, issue_id)
+  def self.add_assignee(user, github_id)
+    service.add_assignee(user, github_id)
   end
 
   def self.current_week_lessons_by_day(date)
