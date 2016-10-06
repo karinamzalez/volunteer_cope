@@ -217,14 +217,10 @@ $(document).ready(function () {
       url: "/api/v1/lessons/assignee/" + lesson.id,
       success: function(assignee){
         if($(".assignees").children()[0] === null) {
-          $(".assignees").append(`<div><img class="volunteer ${assignee.username}" src="${assignee.image}"></img><a href="${assignee.github}">${assignee.username}</a></div>`);
+          $(".assignees").append(`<img class="volunteer ${assignee.username}" src="${assignee.image}"></img>`);
         }
         else {
-          $(".assignees").append(`<div><img class="volunteer ${assignee.username}" src="${assignee.image}"></img><a href="${assignee.github}">${assignee.username}</a></div>`);
-
-          // var user_link = document.createElement("div");
-          // user_link.setAttribute('class', "user-link");
-          // user_link.setAttribute('href', "user-link");
+          $(".assignees").append(`<img class="volunteer ${assignee.username}" src="${assignee.image}"></img>`);
           if ($(".lesson-title").is(":hidden")) {
             $(".assignees").hide();
           }
@@ -240,7 +236,6 @@ $(document).ready(function () {
       success: function(assignees){
         for (var i = 0; i < assignees.length; i++) {
           if($(".assignees").children()[0] === null) {
-            debugger
             $(".assignees").append(`<img class="volunteer ${assignees[i].username}" src="${assignees[i].image}"></img>`);
             var user_link = document.createElement("div");
             user_link.setAttribute('class', "user-link");
