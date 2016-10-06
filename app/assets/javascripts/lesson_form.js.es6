@@ -128,6 +128,7 @@ $(document).ready(function () {
   function renderLesson(lesson) {
     $(".lesson-title").toggle();
     $(".lesson-title").text(lesson.title);
+    $(".lesson-link").attr("href", lesson.url);
   }
 
   function renderLessonBody(lesson) {

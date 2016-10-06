@@ -3,8 +3,7 @@ class Api::V1::LessonsController < ApplicationController
 
   def create
     lesson = Lesson.create_lesson(lesson_params[:title], lesson_params[:body])
-    byebug
-    @lesson = Lesson.new(body: lesson_params[:body], title: lesson_params[:title], date: lesson_params[:date], github_id: lesson[:number], url: lesson[:url])
+    @lesson = Lesson.new(body: lesson_params[:body], title: lesson_params[:title], date: lesson_params[:date], github_id: lesson[:number], url: lesson[:html_url])
     if @lesson.save
       flash.now[:success] = "Lesson successfully created!"
     else
