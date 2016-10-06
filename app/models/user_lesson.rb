@@ -1,5 +1,6 @@
 class UserLesson < ApplicationRecord
   before_create :lesson_not_associated_w_user?
+  validates_uniqueness_of :user_id, :scope => :lesson_id
 
   belongs_to :user
   belongs_to :lesson

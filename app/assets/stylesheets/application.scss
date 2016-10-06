@@ -140,10 +140,11 @@ img {
 }
 
 img.volunteer {
-  margin-top: -66px !important;
+  margin-top: -66px;
   width: 6%;
-  position: absolute !important;
+  position: relative !important;
   right: 7px !important;
+  padding-left: 10px;
   // border: 3px solid rgba(0, 178, 192, 0.5);
 }
 

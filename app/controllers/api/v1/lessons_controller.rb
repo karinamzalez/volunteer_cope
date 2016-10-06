@@ -43,14 +43,20 @@ class Api::V1::LessonsController < ApplicationController
   def remove_assignee
     @lesson = Lesson.find_by(github_id: params[:github_id])
     user_lesson = UserLesson.where(user: current_user, lesson: @lesson)
-    user_lesson.first[:user_id] = 0
+    UserLesson.all.delete(user_lesson)
     Lesson.remove_assignee(current_user.username, params[:github_id])
     render json: @lesson
   end
 
   def assignee
     lesson = Lesson.find(params[:id])
-    @assignees = lesson.users.last
+    @assignee = lesson.users.last
+    render json: @assignee
+  end
+
+  def assignees
+    lesson = Lesson.find(params[:id])
+    @assignees = lesson.users
     render json: @assignees
   end
 
