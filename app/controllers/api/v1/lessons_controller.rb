@@ -3,7 +3,8 @@ class Api::V1::LessonsController < ApplicationController
 
   def create
     lesson = Lesson.create_lesson(lesson_params[:title], lesson_params[:body])
-    @lesson = Lesson.new(body: lesson_params[:body], title: lesson_params[:title], date: lesson_params[:date], github_id: lesson[:number])
+    byebug
+    @lesson = Lesson.new(body: lesson_params[:body], title: lesson_params[:title], date: lesson_params[:date], github_id: lesson[:number], url: lesson[:url])
     if @lesson.save
       flash.now[:success] = "Lesson successfully created!"
     else
@@ -30,6 +31,10 @@ class Api::V1::LessonsController < ApplicationController
 
   def add_assignee
     @lesson = Lesson.add_assignee(current_user.username, params[:github_id])
+    byebug
+    if @lesson
+      UserLesson.create(user: current_user, lesson: @lesson)
+    end
     render json: @lesson
   end
 
