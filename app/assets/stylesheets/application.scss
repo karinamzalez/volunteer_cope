@@ -29,7 +29,7 @@
   margin-bottom: 20px;
 }
 
- .grey-text {
+.grey-text {
   color: #8e8e8e;
   font-size: 22px;
   margin-bottom: -38px;
@@ -139,6 +139,14 @@ img {
     padding-top: 12px;
 }
 
+img.volunteer {
+  margin-top: -66px !important;
+  width: 6%;
+  position: absolute !important;
+  right: 7px !important;
+  // border: 3px solid rgba(0, 178, 192, 0.5);
+}
+
 .btn-lesson {
   margin-top: 60px;
   background-color: white !important;
@@ -162,9 +170,35 @@ img {
   background: transparent;
   color: inherit !important;
   font-size: 15px;
+  font: inherit;
 }
 
 .count_me:hover {
+  margin-left: 10px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  border: 0;
+  background: transparent;
+  color: #41c6d1 !important;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.remove {
+  margin-left: 10px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  border: 0;
+  background: transparent;
+  color: inherit !important;
+  font-size: 15px;
+}
+
+.remove:hover {
   margin-left: 10px;
   appearance: none;
   -webkit-appearance: none;
@@ -199,7 +233,7 @@ img {
 }
 
 .lesson-link {
-  color: grey;
+  color: grey !important;
 }
 
 h2 {

@@ -10,6 +10,12 @@ td:hover {
 .lesson-link:hover {
   color: #41c6d1 !important;
   text-decoration: none;
+  font: inherit !important;
+}
+
+.lesson-link {
+  color: inherit !important;
+  font: inherit !important;
 }
 
 .hour {

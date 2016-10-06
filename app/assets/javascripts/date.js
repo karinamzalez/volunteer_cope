@@ -84,7 +84,9 @@ $(document).ready(function () {
 
  function renderDayOfWeek(dayID) {
    var date = daysOfWeek(new Date())[parseInt(dayID[1])];
-   var unformattedDate = unformattedDaysOfWeek(new Date())[parseInt(dayID[1])];
+   var today = new Date();
+   var unformattedDate = unformattedDaysOfWeek(today)[parseInt(dayID[1])];
+   unformattedDate.setHours(0,0,0,0);
    $(dayID).append(" " + date);
    $("." + dayMapper[dayID[1]][0]).attr("data-date", unformattedDate);
    $("." + dayMapper[dayID[1]][1]).attr("data-date", unformattedDate);
@@ -93,6 +95,7 @@ $(document).ready(function () {
  function renderChosenDayOfWeek(dayID, chosenDate) {
    var date = chosenDaysOfWeek(chosenDate)[parseInt(dayID[1])];
    var unformattedDate = unformattedChosenDaysOfWeek(chosenDate)[parseInt(dayID[1])];
+   unformattedDate.setHours(0,0,0,0);
    var weekday = $(dayID).text().split("y")[0] + "y";
    $(dayID).empty().append(weekday + " " + date);
    $("." + dayMapper[dayID[1]][0]).attr("data-date", unformattedDate);

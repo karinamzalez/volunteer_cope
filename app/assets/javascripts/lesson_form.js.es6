@@ -12,9 +12,6 @@ $(document).ready(function () {
   }
 
   var addAssignees = function() {
-    //cant volunteer if no lesson present
-    //if they try to count themselve in add pop up that urges you to create lesson first
-    //
     $(".count_me").on('click', function(e){
       e.preventDefault();
       var button = $(this);
@@ -23,9 +20,30 @@ $(document).ready(function () {
         method: "GET",
         url: "/api/v1/lessons/find_by/" + date,
         success: function(lesson) {
-          addAssigneeToIssue(lesson.github_id);
+          if(!lesson) {
+            alert("Please add a lesson first :)");
+          }
+          else {
+            addAssigneeToIssue(lesson.github_id);
+            toggleCountMeIn(button);
+            console.log(lesson.github_id);
+          }
+        }
+      });
+    });
+  };
+
+  var removeAssignees = function() {
+    $(".remove").on('click', function(e){
+      e.preventDefault();
+      var button = $(this);
+      var date = button.siblings().children()[0].getAttribute('data-date');
+      $.ajax({
+        method: "GET",
+        url: "/api/v1/lessons/find_by/" + date,
+        success: function(lesson) {
+          removeAssigneeFromIssue(lesson.github_id);
           toggleCountMeIn(button);
-          console.log(lesson.github_id);
         }
       });
     });
@@ -36,15 +54,32 @@ $(document).ready(function () {
       method: "GET",
       url: "/api/v1/lessons/add_assignee/" + githubId,
       success: function(lesson){
-        console.log(lesson);
         appendLessonAssignee(lesson);
       }
     });
   };
 
+  var removeAssigneeFromIssue = function(githubId) {
+    $.ajax({
+      method: "GET",
+      url: "/api/v1/lessons/remove/" + githubId,
+      success: function(lesson){
+        console.log(lesson);
+        removeLessonAssignee(lesson);
+      }
+    });
+  };
+
   var toggleCountMeIn = function(button) {
-    button.replaceWith("<p>yay!</p>");
-};
+    if(button.attr('class') === "remove") {
+      button.replaceWith('<button class="count_me"><span class="glyphicon glyphicon-plus-sign"></span> count me in!</button>');
+      addAssignees();
+    }
+    else {
+      button.replaceWith("<button class='remove'>Can't go</button>");
+      removeAssignees();
+    }
+  };
 
   var createLesson = function(addButton) {
     $("#create_lesson").on("click", function(e) {
@@ -143,18 +178,50 @@ $(document).ready(function () {
       method: "GET",
       url: "/api/v1/lessons/assignee/" + lesson.id,
       success: function(assignee){
-        $(".assignees").append(`<img src="${assignee.image}"></img>`);
-        $(".assignees").toggle();
+        if($(".assignees").children("IMG").length > 0) {
+          $(".assignees").append(`<img class="volunteer ${assignee.username}" src="${assignee.image}"></img>`);
+        }
+        else {
+          $(".assignees").append(`<img class="volunteer ${assignee.username}" src="${assignee.image}"></img>`);
+          if ($(".lesson-title").is(":hidden")) {
+            $(".assignees").hide();
+          }
+        }
       }
     });
   }
 
-  function renderLessonAssignees(){
-    $(".assignees").toggle();
+  function removeLessonAssignee(lesson) {
+    $.ajax({
+      method: "GET",
+      url: "/api/v1/lessons/assignee/" + lesson.id,
+      success: function(assignee){
+        $(`.${assignee.username}`).remove();
+      }
+    });
+  }
+
+  function renderLessonAssignees(lesson){
+    if($(".assignees").children("IMG").length > 0) {
+      $(".assignees").toggle();
+    }
+    else {
+      $.ajax({
+        method: "GET",
+        url: "/api/v1/all_lessons",
+        success: function(lessons){
+          console.log(lessons);
+          for (var i = 0; i < lessons.length; i++) {
+            appendLessonAssignee(lesson);
+          }
+        }
+      });
+    }
   }
 
   calendarWeekLessons();
   viewLesson();
   toggleView(".lesson", "#form");
   addAssignees();
+  removeAssignees();
 });

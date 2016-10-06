@@ -9,8 +9,10 @@ Rails.application.routes.draw do
       get "/lessons/:id",                   to: "lessons#show"
       get "/lessons/find_by/:date",         to: "lessons#find_lesson_by_date"
       get "/lessons/add_assignee/:github_id", to: "lessons#add_assignee"
+      get "/lessons/remove/:github_id",     to: "lessons#remove_assignee"
       get "/lessons/assignee/:id",          to: "lessons#assignee"
       get "/lessons",                       to: "lessons#index"
+      get "/all_lessons",                   to: "lessons#all_lessons"
     end
   end
 

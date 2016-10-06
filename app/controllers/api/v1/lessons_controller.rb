@@ -12,6 +12,11 @@ class Api::V1::LessonsController < ApplicationController
     render json: @lesson
   end
 
+  def all_lessons
+    @lessons = Lesson.all.distinct
+    render json: @lessons
+  end
+
   def show
     @lesson = Lesson.find(params[:id])
     render json: @lesson
@@ -32,6 +37,14 @@ class Api::V1::LessonsController < ApplicationController
     @lesson = Lesson.find_by(github_id: params[:github_id])
     Lesson.add_assignee(current_user.username, params[:github_id])
     user_lesson = UserLesson.create(user: current_user, lesson: @lesson)
+    render json: @lesson
+  end
+
+  def remove_assignee
+    @lesson = Lesson.find_by(github_id: params[:github_id])
+    user_lesson = UserLesson.where(user: current_user, lesson: @lesson)
+    user_lesson.first[:user_id] = 0
+    Lesson.remove_assignee(current_user.username, params[:github_id])
     render json: @lesson
   end
 
