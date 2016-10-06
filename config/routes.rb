@@ -5,11 +5,12 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1, defaults: {format: :json}  do
-      post "/lessons", to: "lessons#create"
-      get "/lessons/:id", to: "lessons#show"
-      get "/lessons/find_by/:date", to: "lessons#find_lesson_by_date"
+      post "/lessons",                      to: "lessons#create"
+      get "/lessons/:id",                   to: "lessons#show"
+      get "/lessons/find_by/:date",         to: "lessons#find_lesson_by_date"
       get "/lessons/add_assignee/:github_id", to: "lessons#add_assignee"
-      get "/lessons", to: "lessons#index"
+      get "/lessons/assignee/:id",          to: "lessons#assignee"
+      get "/lessons",                       to: "lessons#index"
     end
   end
 

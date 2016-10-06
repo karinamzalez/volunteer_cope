@@ -35,8 +35,9 @@ $(document).ready(function () {
     $.ajax({
       method: "GET",
       url: "/api/v1/lessons/add_assignee/" + githubId,
-      success: function(data){
-        console.log(data);
+      success: function(lesson){
+        console.log(lesson);
+        appendLessonAssignee(lesson);
       }
     });
   };
@@ -74,6 +75,7 @@ $(document).ready(function () {
         success: function(lesson) {
           renderLesson(lesson);
           renderLessonBody(lesson);
+          renderLessonAssignees(lesson);
         }
       });
     });
@@ -134,6 +136,21 @@ $(document).ready(function () {
   function renderLessonBody(lesson) {
     $(".lesson-body").toggle();
     $(".lesson-body").text(lesson.body);
+  }
+
+  function appendLessonAssignee(lesson) {
+    $.ajax({
+      method: "GET",
+      url: "/api/v1/lessons/assignee/" + lesson.id,
+      success: function(assignee){
+        $(".assignees").append(`<img src="${assignee.image}"></img>`);
+        $(".assignees").toggle();
+      }
+    });
+  }
+
+  function renderLessonAssignees(){
+    $(".assignees").toggle();
   }
 
   calendarWeekLessons();

@@ -6,7 +6,7 @@ class UserLesson < ApplicationRecord
 
   private
 
-  def user_not_associated_with_charity?
+  def lesson_not_associated_w_user?
     if UserLesson.find_by(user_id: user_id)
       return false
     else
