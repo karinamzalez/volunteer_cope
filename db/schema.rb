@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161005192325) do
+ActiveRecord::Schema.define(version: 20161006001149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 20161005192325) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "github_id"
+    t.string   "url"
+  end
+
+  create_table "user_lessons", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_user_lessons_on_lesson_id", using: :btree
+    t.index ["user_id"], name: "index_user_lessons_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -37,4 +47,6 @@ ActiveRecord::Schema.define(version: 20161005192325) do
     t.string   "slug"
   end
 
+  add_foreign_key "user_lessons", "lessons"
+  add_foreign_key "user_lessons", "users"
 end

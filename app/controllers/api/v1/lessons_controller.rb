@@ -3,13 +3,18 @@ class Api::V1::LessonsController < ApplicationController
 
   def create
     lesson = Lesson.create_lesson(lesson_params[:title], lesson_params[:body])
-    @lesson = Lesson.new(body: lesson_params[:body], title: lesson_params[:title], date: lesson_params[:date], github_id: lesson[:number])
+    @lesson = Lesson.new(body: lesson_params[:body], title: lesson_params[:title], date: lesson_params[:date], github_id: lesson[:number], url: lesson[:html_url])
     if @lesson.save
       flash.now[:success] = "Lesson successfully created!"
     else
       flash.now[:warning] = "Please fill in the title and description."
     end
     render json: @lesson
+  end
+
+  def all_lessons
+    @lessons = Lesson.all.distinct
+    render json: @lessons
   end
 
   def show
@@ -29,8 +34,30 @@ class Api::V1::LessonsController < ApplicationController
   end
 
   def add_assignee
-    @lesson = Lesson.add_assignee(current_user.username, params[:github_id])
+    @lesson = Lesson.find_by(github_id: params[:github_id])
+    Lesson.add_assignee(current_user.username, params[:github_id])
+    user_lesson = UserLesson.create(user: current_user, lesson: @lesson)
     render json: @lesson
+  end
+
+  def remove_assignee
+    @lesson = Lesson.find_by(github_id: params[:github_id])
+    user_lesson = UserLesson.where(user: current_user, lesson: @lesson)
+    UserLesson.all.delete(user_lesson)
+    Lesson.remove_assignee(current_user.username, params[:github_id])
+    render json: @lesson
+  end
+
+  def assignee
+    lesson = Lesson.find(params[:id])
+    @assignee = lesson.users.last
+    render json: @assignee
+  end
+
+  def assignees
+    lesson = Lesson.find(params[:id])
+    @assignees = lesson.users
+    render json: @assignees
   end
 
 private

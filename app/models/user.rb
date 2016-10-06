@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   before_create :create_slug
+  has_many :user_lessons
+  has_many :users, through: :user_lessons
 
   def create_slug
     self.slug = self.username.parameterize

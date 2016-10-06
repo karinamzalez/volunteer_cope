@@ -14,8 +14,9 @@ $( function() {
 </div>
 <p class="col-sm-offset-3">Date: <input type="text" id="datepicker" size="30"></p>
 <div class="jumbotron col-sm-8 col-sm-offset-1">
-  <h2 class="lesson-title"></h2>
+   <a class="lesson-link"><h2 class="lesson-title"></h2></a>
     <p class="lesson-body"></p>
+      <a class="col-sm-offset-10 assignees"></a>
   <div style="display:none" id="form">
     <%= render partial: 'lesson'%>
   </div>
@@ -31,8 +32,10 @@ $( function() {
   <tr>
   <% @lessons.current_week_lessons.each do |days_lesson| %>
     <td class="hour" style="height: 200px">5 p.m.
-      <%= link_to '/add_assignees', class: 'count_me' do %>
-      <span class="glyphicon glyphicon-plus-sign"></span> count me in!
+      <% if days_lesson[1] && @lessons.user_volunteered(days_lesson[1]) %>
+        <button class='remove'>Can't go</button>
+      <% else days_lesson[1] %>
+        <button class='count_me'><span class="glyphicon glyphicon-plus-sign"></span> count me in!</button>
       <% end %>
       <p>
         <% if days_lesson[1] %>

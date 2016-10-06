@@ -12,9 +12,6 @@ $(document).ready(function () {
   }
 
   var addAssignees = function() {
-    //cant volunteer if no lesson present
-    //if they try to count themselve in add pop up that urges you to create lesson first
-    //
     $(".count_me").on('click', function(e){
       e.preventDefault();
       var button = $(this);
@@ -23,9 +20,31 @@ $(document).ready(function () {
         method: "GET",
         url: "/api/v1/lessons/find_by/" + date,
         success: function(lesson) {
-          addAssigneeToIssue(lesson.github_id);
+          if(!lesson) {
+            alert("Please add a lesson first :)");
+          }
+          else {
+            addAssigneeToIssue(lesson.github_id);
+            toggleCountMeIn(button);
+            console.log(lesson.github_id);
+          }
+        }
+      });
+    });
+  };
+
+  var removeAssignees = function() {
+    $(".remove").on('click', function(e){
+      e.preventDefault();
+      var button = $(this);
+      var date = button.siblings().children()[0].getAttribute('data-date');
+      $.ajax({
+        method: "GET",
+        url: "/api/v1/lessons/find_by/" + date,
+        success: function(lesson) {
+          removeLessonAssignee(lesson);
+          removeAssigneeFromIssue(lesson.github_id);
           toggleCountMeIn(button);
-          console.log(lesson.github_id);
         }
       });
     });
@@ -35,15 +54,32 @@ $(document).ready(function () {
     $.ajax({
       method: "GET",
       url: "/api/v1/lessons/add_assignee/" + githubId,
-      success: function(data){
-        console.log(data);
+      success: function(lesson){
+        appendLessonAssignee(lesson);
+      }
+    });
+  };
+
+  var removeAssigneeFromIssue = function(githubId) {
+    $.ajax({
+      method: "GET",
+      url: "/api/v1/lessons/remove/" + githubId,
+      success: function(lesson){
+        console.log(lesson);
       }
     });
   };
 
   var toggleCountMeIn = function(button) {
-    button.replaceWith("<p>yay!</p>");
-};
+    if(button.attr('class') === "remove") {
+      button.replaceWith('<button class="count_me"><span class="glyphicon glyphicon-plus-sign"></span> count me in!</button>');
+      addAssignees();
+    }
+    else {
+      button.replaceWith("<button class='remove'>Can't go</button>");
+      removeAssignees();
+    }
+  };
 
   var createLesson = function(addButton) {
     $("#create_lesson").on("click", function(e) {
@@ -74,6 +110,7 @@ $(document).ready(function () {
         success: function(lesson) {
           renderLesson(lesson);
           renderLessonBody(lesson);
+          renderLessonAssignees(lesson);
         }
       });
     });
@@ -128,6 +165,7 @@ $(document).ready(function () {
   function renderLesson(lesson) {
     $(".lesson-title").toggle();
     $(".lesson-title").text(lesson.title);
+    $(".lesson-link").attr("href", lesson.url);
   }
 
   function renderLessonBody(lesson) {
@@ -135,8 +173,76 @@ $(document).ready(function () {
     $(".lesson-body").text(lesson.body);
   }
 
+  function appendLessonAssignee(lesson) {
+    $.ajax({
+      method: "GET",
+      url: "/api/v1/lessons/assignee/" + lesson.id,
+      success: function(assignee){
+        if($(".assignees").children()[0] === null) {
+          debugger
+          $(".assignees").append(`<img class="volunteer ${assignee.username}" src="${assignee.image}"></img>`);
+        }
+        else {
+          $(".assignees").append(`<img class="volunteer ${assignee.username}" src="${assignee.image}"></img>`);
+          if ($(".lesson-title").is(":hidden")) {
+            $(".assignees").hide();
+          }
+        }
+      }
+    });
+  }
+
+  function appendLessonAssignees(lesson) {
+    $.ajax({
+      method: "GET",
+      url: "/api/v1/lessons/assignees/" + lesson.id,
+      success: function(assignees){
+        for (var i = 0; i < assignees.length; i++) {
+          if($(".assignees").children()[0] === null) {
+            $(".assignees").append(`<img class="volunteer ${assignees[i].username}" src="${assignees[i].image}"></img>`);
+          }
+          else {
+            $(".assignees").append(`<img class="volunteer ${assignees[i].username}" src="${assignees[i].image}"></img>`);
+            if ($(".lesson-title").is(":hidden")) {
+              $(".assignees").hide();
+            }
+          }
+        }
+      }
+    });
+  }
+
+  function removeLessonAssignee(lesson) {
+    $.ajax({
+      method: "GET",
+      url: "/api/v1/lessons/assignee/" + lesson.id,
+      success: function(assignee){
+        $(`.${assignee.username}`).remove();
+      }
+    });
+  }
+
+  function renderLessonAssignees(lesson){
+    if($(".assignees").children("IMG").length > 0) {
+      $(".assignees").toggle();
+    }
+    else {
+      $.ajax({
+        method: "GET",
+        url: "/api/v1/all_lessons",
+        success: function(lessons){
+          console.log(lessons);
+          for (var i = 0; i < lessons.length; i++) {
+            appendLessonAssignees(lesson);
+          }
+        }
+      });
+    }
+  }
+
   calendarWeekLessons();
   viewLesson();
   toggleView(".lesson", "#form");
   addAssignees();
+  removeAssignees();
 });

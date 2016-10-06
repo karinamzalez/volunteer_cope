@@ -20,7 +20,11 @@ class GithubService
   end
 
   def add_assignee(user, issue_id)
-    `curl -H "Content-Type: application/json" -H "Authorization: token #{ENV['ADMIN_TOKEN']}" --data '{"assignees":["#{user}"]}' https://api.github.com/repos/volunteercope/volunteer_cope/issues/#{issue_id}`
+    JSON.parse(`curl -H "Content-Type: application/json" -H "Authorization: token #{ENV['ADMIN_TOKEN']}" --data '{"assignees":["#{user}"]}' https://api.github.com/repos/volunteercope/volunteer_cope/issues/#{issue_id}`, symbolize_names: true)
+  end
+
+  def remove_assignee(user, issue_id)
+    JSON.parse(`curl -X DELETE -H "Authorization: token #{ENV['ADMIN_TOKEN']}" -H "Content-Type: application/json" --data '{"assignees":["#{user}"]}' https://api.github.com/repos/volunteercope/volunteer_cope/issues/#{issue_id}/assignees`, symbolize_names: true)
   end
 
 private
