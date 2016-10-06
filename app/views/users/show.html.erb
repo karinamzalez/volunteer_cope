@@ -35,7 +35,7 @@ $( function() {
       <% if days_lesson[1] && @lessons.user_volunteered(days_lesson[1]) %>
         <button class='remove'>Can't go</button>
       <% else days_lesson[1] %>
-        <button class='count_me'><span class="glyphicon glyphicon-plus-sign"></span> count me in!</button>
+        <button class='count_me'>Count me in! <span class="glyphicon glyphicon-plus-sign"></span></button>
       <% end %>
       <p>
         <% if days_lesson[1] %>
@@ -51,27 +51,27 @@ $( function() {
   <tr>
     <td class="hour" id="monday_6" style="height: 200px">6 p.m.
       <%= link_to '/add_assignees', class: 'count_me' do %>
-        <span class="glyphicon glyphicon-plus-sign"></span> count me in!
+        Count me in! <span class="glyphicon glyphicon-plus-sign"></span>
       <% end %>
     </td>
     <td class="hour" id="tuesday_6">6 p.m.
       <%= link_to '/add_assignees', class: 'count_me' do %>
-        <span class="count glyphicon glyphicon-plus-sign"></span> count me in!
+        Count me in! <span class="glyphicon glyphicon-plus-sign"></span> 
       <% end %>
     </td>
     <td class="hour" id="wednesday_6">6 p.m.
       <%= link_to '/add_assignees', class: 'count_me' do %>
-        <span class="glyphicon glyphicon-plus-sign"></span> count me in!
+        Count me in! <span class="glyphicon glyphicon-plus-sign"></span>
       <% end %>
     </td>
     <td class="hour" id="thursday_6">6 p.m.
       <%= link_to '/add_assignees', class: 'count_me' do %>
-        <span class="glyphicon glyphicon-plus-sign"></span> count me in!
+        Count me in! <span class="glyphicon glyphicon-plus-sign"></span>
       <% end %>
     </td>
     <td class="hour" id="friday_6">6 p.m.
       <%= link_to '/add_assignees', class: 'count_me' do %>
-        <span class="glyphicon glyphicon-plus-sign"></span> count me in!
+        Count me in! <span class="glyphicon glyphicon-plus-sign"></span>
       <% end %>
     </td>
   </tr>

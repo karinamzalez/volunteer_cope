@@ -13,7 +13,7 @@ class Api::V1::LessonsController < ApplicationController
   end
 
   def all_lessons
-    @lessons = Lesson.all.distinct
+    @lessons = Lesson.all.uniq
     render json: @lessons
   end
 
@@ -49,8 +49,7 @@ class Api::V1::LessonsController < ApplicationController
   end
 
   def assignee
-    lesson = Lesson.find(params[:id])
-    @assignee = lesson.users.last
+    @assignee = User.find(current_user.id)
     render json: @assignee
   end
 
@@ -58,6 +57,18 @@ class Api::V1::LessonsController < ApplicationController
     lesson = Lesson.find(params[:id])
     @assignees = lesson.users
     render json: @assignees
+  end
+
+  def user_volunteered
+    lesson = Lesson.find(params[:id])
+    @volunteered = {yes: lesson.users.map do |user|
+      if user == current_user
+        true
+      else
+        false
+      end
+    end.include?(true), lesson_postion: params[:lesson_postion].to_i}
+    render json: @volunteered
   end
 
 private

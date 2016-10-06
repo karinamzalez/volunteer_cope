@@ -90,6 +90,7 @@ $(document).ready(function () {
    $(dayID).append(" " + date);
    $("." + dayMapper[dayID[1]][0]).attr("data-date", unformattedDate);
    $("." + dayMapper[dayID[1]][1]).attr("data-date", unformattedDate);
+   
  }
 
  function renderChosenDayOfWeek(dayID, chosenDate) {

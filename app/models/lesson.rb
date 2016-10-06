@@ -1,4 +1,6 @@
 class Lesson < ApplicationRecord
+  validates :date, uniqueness: true
+
   has_many :user_lessons
   has_many :users, through: :user_lessons
 

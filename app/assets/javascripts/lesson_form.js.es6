@@ -72,7 +72,7 @@ $(document).ready(function () {
 
   var toggleCountMeIn = function(button) {
     if(button.attr('class') === "remove") {
-      button.replaceWith('<button class="count_me"><span class="glyphicon glyphicon-plus-sign"></span> count me in!</button>');
+      button.replaceWith('<button class="count_me">Count me in! <span class="glyphicon glyphicon-plus-sign"></span></button>');
       addAssignees();
     }
     else {
@@ -129,8 +129,47 @@ $(document).ready(function () {
           success: function(lessons){
             updateCalendarDates(date);
             renderViewLessonButtons(lessons);
+            renderAssigneeButtons(lessons);
           }
         });
+      }
+    });
+  }
+
+  function renderAssigneeButtons(lessons) {
+    lessons.forEach(function(lesson){
+      if(lesson[1] !== null){
+        $.ajax({
+          method: "GET",
+          url: "/api/v1/lessons/user_volunteered/" + lesson[1][0].id,
+          data: {lesson_postion: lesson[0]},
+          success: function(volunteered){
+            var vol = volunteered.lesson_postion;
+            var button = $(`.day_${vol}_5`).parent().siblings()[0];
+            if(volunteered.yes === true){
+              if(button.getAttribute('class') !== 'remove'){
+                button.removeAttribute('class');
+                button.setAttribute('class', "remove");
+                button.innerHtml = "";
+                var html = button.innerHTML = "Can't go";
+                removeAssignees();
+              }
+            }
+          }
+        });
+      }
+      else {
+        var button = $(`.day_${lesson[0]}_5`).parent().siblings()[0];
+        if(button.getAttribute('class') === 'remove'){
+          button.removeAttribute('class');
+          button.setAttribute('class', "count_me");
+          button.innerHtml = "";
+          var html = button.innerHTML = "Count me in! ";
+          var sp1 = document.createElement("span");
+          sp1.setAttribute('class', "glyphicon glyphicon-plus-sign");
+          button.appendChild(sp1);
+          addAssignees();
+        }
       }
     });
   }
@@ -179,7 +218,6 @@ $(document).ready(function () {
       url: "/api/v1/lessons/assignee/" + lesson.id,
       success: function(assignee){
         if($(".assignees").children()[0] === null) {
-          debugger
           $(".assignees").append(`<img class="volunteer ${assignee.username}" src="${assignee.image}"></img>`);
         }
         else {
