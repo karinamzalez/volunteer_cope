@@ -10,13 +10,13 @@ $( function() {
 </script>
 
 <div class="col-sm-2 picture-box">
-  <img src= <%= current_user.image %> height="250" width="250"/>
+  <img class="big-pic" src= <%= current_user.image %> height="250" width="250"/>
 </div>
 <p class="col-sm-offset-3">Date: <input type="text" id="datepicker" size="30"></p>
 <div class="jumbotron col-sm-8 col-sm-offset-1">
    <a class="lesson-link"><h2 class="lesson-title"></h2></a>
     <p class="lesson-body"></p>
-      <a class="col-sm-offset-10 assignees"></a>
+      <div class="col-sm-offset-10 assignees"></div>
   <div style="display:none" id="form">
     <%= render partial: 'lesson'%>
   </div>
@@ -56,7 +56,7 @@ $( function() {
     </td>
     <td class="hour" id="tuesday_6">6 p.m.
       <%= link_to '/add_assignees', class: 'count_me' do %>
-        Count me in! <span class="glyphicon glyphicon-plus-sign"></span> 
+        Count me in! <span class="glyphicon glyphicon-plus-sign"></span>
       <% end %>
     </td>
     <td class="hour" id="wednesday_6">6 p.m.
