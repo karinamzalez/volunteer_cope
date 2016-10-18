@@ -119,6 +119,7 @@ $(document).ready(function () {
   function calendarWeekLessons() {
     $("#datepicker").datepicker({
       onSelect: function(dateText) {
+        toggleView(".lesson", "#form");
         $(this).change();
         var dateTypeVar = $('#datepicker').datepicker('getDate');
         var date = $.datepicker.formatDate('dd-mm-yy', dateTypeVar);
