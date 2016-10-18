@@ -4,7 +4,7 @@ describe GithubService do
 
   before(:each) do
     user = User.create(uid: 1, name: "Karina Munoz Gonzalez", username: "karinamzalez", oauth_token: ENV["TOKEN"], image: "apple", email: "karinamzalez@gmail.com", github: "https://github.com/karinamzalez")
-    @service = GithubService.new(user)
+    @service = GithubService.new
   end
 
   context "#repo_issues" do
