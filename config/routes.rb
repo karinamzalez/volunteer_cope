@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       get "/lessons/assignees/:id",         to: "lessons#assignees"
       get "/lessons",                       to: "lessons#index"
       get "/all_lessons",                   to: "lessons#all_lessons"
-      get "/lessons/user_volunteered/:id",          to: "lessons#user_volunteered"
+      get "/lessons/user_volunteered/:id",  to: "lessons#user_volunteered"
     end
   end
 
