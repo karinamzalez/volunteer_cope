@@ -13,15 +13,15 @@
  *= require_tree .
  *= require_self
  */
- body.homepage {
-   background-color: white;
- }
+body.homepage {
+  background-color: white;
+}
 
- .hidden {
-   display: none;
- }
+.hidden {
+  display: none;
+}
 
- body.homepage #navbar {
+body.homepage #navbar {
   display: none !important;
 }
 

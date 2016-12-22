@@ -12,25 +12,9 @@
   </head>
 
   <body class="homepage">
-      <nav class="navbar navbar-default">
-        <div class="container-fluid col-lg-12">
-          <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-left">
-              <li class="green-text">{ </li><li class= "grey-text"> Volunteer <li class="blue-text">Cope </li><li class="green-text"> }</li>
-            <ul>
-          </div>
-          <ul class="nav navbar-nav navbar-right">
-            <% if current_user %>
-              <li><%= link_to "Logout", logout_path, method: :delete %></li>
-            <% else %>
-              <li class="custom-nav"><a href="https://github.com/login/oauth/authorize?client_id=#{ENV['GITHUB_CLIENT_ID']}&scope=user:email">Login</a></li>
-            <% end %>
-          </ul>
-        </div>
-      </nav>
-      <% flash.each do |type, message| %>
-        <%= message %>
-      <% end %>
-      <%= yield %>
-    </body>
+    <% flash.each do |type, message| %>
+      <%= message %>
+    <% end %>
+    <%= yield %>
+  </body>
 </html>
