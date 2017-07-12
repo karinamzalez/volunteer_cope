@@ -1,0 +1,18 @@
+main-section {
+  display: table;
+  width: 100%;
+  height: 100px;
+  padding: 20px;
+  position: relative;
+}
+
+.main-section h1 {
+  text-align: center;
+  color: white;
+  font-size: 70px;
+}
+
+.main-section h1 span {
+  text-align: center;
+  color: rgba(15, 113, 131, 0.77);
+}
