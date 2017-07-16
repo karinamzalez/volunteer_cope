@@ -16,6 +16,8 @@ body {
   text-align: center;
   color: white;
   font-size: 70px;
+  margin-top: 0.7em;
+  margin-bottom: 0.7em;
 }
 
 .main-section h1 span {
@@ -47,6 +49,10 @@ body {
 
 .blue-bg h1, .blue-bg p {
   color: white;
+}
+
+img {
+  margin-top: 10px;
 }
 
 p {
