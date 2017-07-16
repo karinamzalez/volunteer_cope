@@ -4,6 +4,10 @@ body {
   background-size: cover;
 }
 
+.row {
+  margin-top: 20px;
+}
+
 .main-section {
   display: table;
   width: 100%;
@@ -50,10 +54,6 @@ body {
 
 .blue-bg h1, .blue-bg p, .blue-bg li {
   color: white;
-}
-
-img {
-  margin-top: 10px;
 }
 
 p {
